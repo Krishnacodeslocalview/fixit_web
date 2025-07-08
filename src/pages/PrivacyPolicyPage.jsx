@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
-  ArrowLeft,
   Shield,
   Lock,
   Eye,
@@ -14,6 +13,7 @@ import {
   Wrench,
 } from "lucide-react";
 import CustomButton from "../components/CustomButton";
+import logo from "../assets/logo.png";
 
 const PrivacyPolicyPage = () => {
   const navigate = useNavigate();
@@ -102,7 +102,7 @@ const PrivacyPolicyPage = () => {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50"
+        className="bg-gray-900/95 shadow-sm border-b border-gray-200 sticky top-0 z-50"
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -112,12 +112,11 @@ const PrivacyPolicyPage = () => {
                   className="flex items-center space-x-2"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
-                    <Wrench className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-xl font-bold text-gray-900">
-                    Fix It India
-                  </span>
+                  <img
+                    src={logo}
+                    alt="Fixit india "
+                    className="h-20 w-20 object-cover"
+                  />
                 </motion.div>
               </button>
             </div>
@@ -127,8 +126,7 @@ const PrivacyPolicyPage = () => {
               className="flex items-center space-x-2"
               onClick={navigateHome}
             >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Home</span>
+              <span className="text-white">Back to Home</span>
             </CustomButton>
           </div>
         </div>
@@ -311,8 +309,8 @@ const PrivacyPolicyPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
-                <Wrench className="w-5 h-5 text-white" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center">
+                <img src={logo} alt="fixitindia logo " />
               </div>
               <span className="text-xl font-bold">Fix It India</span>
             </div>

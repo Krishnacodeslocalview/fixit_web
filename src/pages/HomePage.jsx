@@ -113,7 +113,7 @@ const HomePage = () => {
   const recentWorks = [
     {
       title: "AC Installation & Repair",
-      location: "Bandra, Mumbai",
+      location: "Belagavi, Banglore",
       description:
         "Complete AC installation and repair service for residential complex",
       image:
@@ -123,7 +123,7 @@ const HomePage = () => {
     },
     {
       title: "Washing Machine Repair",
-      location: "Andheri, Mumbai",
+      location: "Belagavi, Banglore",
       description:
         "Front load washing machine repair with genuine parts replacement",
       image:
@@ -133,7 +133,7 @@ const HomePage = () => {
     },
     {
       title: "Refrigerator Service",
-      location: "Powai, Mumbai",
+      location: "Belagavi, Banglore",
       description:
         "Double door refrigerator cooling issue resolved with compressor service",
       image:
@@ -142,12 +142,52 @@ const HomePage = () => {
       date: "Nov 2024",
     },
     {
-      title: "Mobile Screen Replacement",
-      location: "Malad, Mumbai",
+      title: "Electrical work",
+      location: "Belagavi, Banglore",
       description:
-        "iPhone screen replacement with original display and touch functionality",
+        "Licensed electrical services including wiring, outlet installation, lighting fixtures, and electrical troubleshooting.",
+      image:
+        "https://5.imimg.com/data5/SELLER/Default/2023/6/314028266/YB/SV/QI/25431077/hotel-electrical-wiring-repairing-service-500x500.jpeg",
+      rating: 5,
+      date: "Nov 2024",
+    },
+    {
+      title: "Furniture assembly",
+      location: "Belagavi, Banglore",
+      description:
+        "Professional furniture assembly and installation services with precision and care for all types of furniture.",
+      image:
+        "https://fitmysofany.com/wp-content/uploads/2024/04/Main-furniture-assembly-1.jpg",
+      rating: 5,
+      date: "Nov 2024",
+    },
+    {
+      title: "Home Improvement",
+      location: "Belagavi, Banglore",
+      description:
+        "Complete home renovation services including kitchen upgrades, bathroom remodeling, and modern design implementations.",
       image:
         "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",
+      rating: 5,
+      date: "Nov 2024",
+    },
+    {
+      title: "Painting Services",
+      location: "Belagavi, Banglore",
+      description:
+        "Professional interior and exterior painting with premium quality paints, color consultation, and expert finishing.",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScOkRqgqa8S8sY0D4UjjJw3yyJu_5Ax18dDA&s",
+      rating: 5,
+      date: "Nov 2024",
+    },
+    {
+      title: "Plumbing Solutions",
+      location: "Belagavi, Banglore",
+      description:
+        "Expert plumbing services including leak repairs, pipe installation, fixture replacement, and emergency plumbing.",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVcFW8lNjtpqmpycJa7r6kMCwDnlA3ENZixQ&s",
       rating: 5,
       date: "Nov 2024",
     },
