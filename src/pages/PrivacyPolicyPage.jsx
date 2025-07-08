@@ -1,40 +1,49 @@
-"use client"
-
-import { useEffect } from "react"
-import { motion } from "framer-motion"
-import { useNavigate } from "react-router-dom"
-import { ArrowLeft, Shield, Lock, Eye, FileText, Users, Phone, Mail, MapPin, Wrench } from "lucide-react"
-import CustomButton from "../components/CustomButton"
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import {
+  ArrowLeft,
+  Shield,
+  Lock,
+  Eye,
+  FileText,
+  Users,
+  Phone,
+  Mail,
+  MapPin,
+  Wrench,
+} from "lucide-react";
+import CustomButton from "../components/CustomButton";
 
 const PrivacyPolicyPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px",
-    }
+    };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible")
+          entry.target.classList.add("visible");
         }
-      })
-    }, observerOptions)
+      });
+    }, observerOptions);
 
-    const fadeElements = document.querySelectorAll(".fade-in-up")
+    const fadeElements = document.querySelectorAll(".fade-in-up");
     fadeElements.forEach((el, index) => {
-      el.style.animationDelay = `${index * 0.1}s`
-      observer.observe(el)
-    })
+      el.style.animationDelay = `${index * 0.1}s`;
+      observer.observe(el);
+    });
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   const navigateHome = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   const sections = [
     {
@@ -85,7 +94,7 @@ const PrivacyPolicyPage = () => {
         "Contact Us: For any privacy-related concerns, please contact our privacy team at privacy@fixitindia.com.",
       ],
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
@@ -99,16 +108,25 @@ const PrivacyPolicyPage = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <button onClick={navigateHome}>
-                <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.05 }}>
+                <motion.div
+                  className="flex items-center space-x-2"
+                  whileHover={{ scale: 1.05 }}
+                >
                   <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
                     <Wrench className="w-6 h-6 text-white" />
                   </div>
-                  <span className="text-xl font-bold text-gray-900">Fix It India</span>
+                  <span className="text-xl font-bold text-gray-900">
+                    Fix It India
+                  </span>
                 </motion.div>
               </button>
             </div>
 
-            <CustomButton variant="outline" className="flex items-center space-x-2" onClick={navigateHome}>
+            <CustomButton
+              variant="outline"
+              className="flex items-center space-x-2"
+              onClick={navigateHome}
+            >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Home</span>
             </CustomButton>
@@ -124,18 +142,26 @@ const PrivacyPolicyPage = () => {
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <Shield className="w-10 h-10 text-primary" />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              FixitIndia Platform <span className="text-primary">Privacy Policy</span>
+              FixitIndia Platform{" "}
+              <span className="text-primary">Privacy Policy</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Your privacy is important to us. This policy explains how we collect, use, and protect your personal
-              information when you use our platform and services.
+              Your privacy is important to us. This policy explains how we
+              collect, use, and protect your personal information when you use
+              our platform and services.
             </p>
-            <div className="text-sm text-gray-400">Last updated: January 8, 2025</div>
+            <div className="text-sm text-gray-400">
+              Last updated: January 8, 2025
+            </div>
           </motion.div>
         </div>
       </section>
@@ -146,12 +172,16 @@ const PrivacyPolicyPage = () => {
           {/* Introduction */}
           <div className="mb-16 fade-in-up">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Commitment to Your Privacy</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Our Commitment to Your Privacy
+              </h2>
               <p className="text-gray-600 leading-relaxed">
-                At Fix It India, we are committed to protecting your privacy and ensuring the security of your personal
-                information. This privacy policy outlines how we collect, use, store, and protect your data when you use
-                our repair services. We believe in transparency and want you to understand exactly how your information
-                is handled.
+                At Fix It India, we are committed to protecting your privacy and
+                ensuring the security of your personal information. This privacy
+                policy outlines how we collect, use, store, and protect your
+                data when you use our repair services. We believe in
+                transparency and want you to understand exactly how your
+                information is handled.
               </p>
             </div>
           </div>
@@ -171,7 +201,9 @@ const PrivacyPolicyPage = () => {
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                     <div className="text-primary">{section.icon}</div>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900">{section.title}</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">
+                    {section.title}
+                  </h3>
                 </div>
 
                 <ul className="space-y-3">
@@ -201,10 +233,12 @@ const PrivacyPolicyPage = () => {
             className="mt-16"
           >
             <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                Contact Information
+              </h3>
               <p className="text-gray-600 text-center mb-8">
-                If you have any questions about this privacy policy or how we handle your personal information, please
-                contact us.
+                If you have any questions about this privacy policy or how we
+                handle your personal information, please contact us.
               </p>
 
               <div className="grid md:grid-cols-3 gap-6">
@@ -222,8 +256,12 @@ const PrivacyPolicyPage = () => {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-1">Email Us</h4>
-                  <p className="text-primary font-medium">privacy@fixitindia.com</p>
-                  <p className="text-gray-600 text-sm">Response within 24 hours</p>
+                  <p className="text-primary font-medium">
+                    privacy@fixitindia.com
+                  </p>
+                  <p className="text-gray-600 text-sm">
+                    Response within 24 hours
+                  </p>
                 </motion.div>
 
                 <motion.div className="text-center" whileHover={{ y: -5 }}>
@@ -231,7 +269,9 @@ const PrivacyPolicyPage = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
-                  <p className="text-primary font-medium">Mumbai, Maharashtra</p>
+                  <p className="text-primary font-medium">
+                    Mumbai, Maharashtra
+                  </p>
                   <p className="text-gray-600 text-sm">India</p>
                 </motion.div>
               </div>
@@ -246,16 +286,20 @@ const PrivacyPolicyPage = () => {
             className="mt-12"
           >
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Policy Updates</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Policy Updates
+              </h3>
               <p className="text-gray-600 leading-relaxed mb-4">
-                We may update this privacy policy from time to time to reflect changes in our practices or for other
-                operational, legal, or regulatory reasons. When we make changes, we will update the "Last updated" date
-                at the top of this policy.
+                We may update this privacy policy from time to time to reflect
+                changes in our practices or for other operational, legal, or
+                regulatory reasons. When we make changes, we will update the
+                "Last updated" date at the top of this policy.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                We encourage you to review this policy periodically to stay informed about how we are protecting your
-                information. Your continued use of our services after any changes indicates your acceptance of the
-                updated policy.
+                We encourage you to review this policy periodically to stay
+                informed about how we are protecting your information. Your
+                continued use of our services after any changes indicates your
+                acceptance of the updated policy.
               </p>
             </div>
           </motion.div>
@@ -272,7 +316,9 @@ const PrivacyPolicyPage = () => {
               </div>
               <span className="text-xl font-bold">Fix It India</span>
             </div>
-            <p className="text-gray-400 mb-4">Your trusted partner for all repair services</p>
+            <p className="text-gray-400 mb-4">
+              Your trusted partner for all repair services
+            </p>
             <div className="flex justify-center space-x-6 text-sm text-gray-500">
               <span>© 2024 Fix It India. All rights reserved.</span>
             </div>
@@ -280,7 +326,7 @@ const PrivacyPolicyPage = () => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default PrivacyPolicyPage
+export default PrivacyPolicyPage;

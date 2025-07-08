@@ -1,6 +1,11 @@
-import { useState, useEffect } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   Phone,
   Mail,
@@ -19,58 +24,60 @@ import {
   Twitter,
   Instagram,
   Linkedin,
-} from "lucide-react"
-import CustomButton from "../components/CustomButton"
-import { CustomCard, CustomCardContent } from "../components/CustomCard"
-import logo from "../assets/logo.png"
+} from "lucide-react";
+import CustomButton from "../components/CustomButton";
+import { CustomCard, CustomCardContent } from "../components/CustomCard";
+import logo from "../assets/logo.png";
 
 const HomePage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const navigate = useNavigate()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px",
-    }
+    };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible")
+          entry.target.classList.add("visible");
         }
-      })
-    }, observerOptions)
+      });
+    }, observerOptions);
 
-    const animatedElements = document.querySelectorAll(".fade-in-up, .fade-in-left, .fade-in-right")
-    animatedElements.forEach((el) => observer.observe(el))
+    const animatedElements = document.querySelectorAll(
+      ".fade-in-up, .fade-in-left, .fade-in-right"
+    );
+    animatedElements.forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setIsMenuOpen(false)
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
     }
-  }
+  };
 
   const navigateToPrivacyPolicy = () => {
-    navigate("/privacy-policy")
-  }
+    navigate("/privacy-policy");
+  };
 
   const services = [
     {
@@ -83,57 +90,68 @@ const HomePage = () => {
     {
       icon: <Shield className="w-8 h-8" />,
       title: "Electronics Repair",
-      description: "Professional repair services for smartphones, laptops, tablets, and other electronic devices.",
+      description:
+        "Professional repair services for smartphones, laptops, tablets, and other electronic devices.",
       features: ["Data Recovery", "Screen Replacement", "Quick Turnaround"],
     },
     {
       icon: <Clock className="w-8 h-8" />,
       title: "Emergency Service",
-      description: "24/7 emergency repair services for urgent appliance breakdowns.",
+      description:
+        "24/7 emergency repair services for urgent appliance breakdowns.",
       features: ["24/7 Available", "Quick Response", "Emergency Support"],
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "Expert Technicians",
-      description: "Certified and experienced technicians providing quality repair services.",
+      description:
+        "Certified and experienced technicians providing quality repair services.",
       features: ["Certified Experts", "Background Verified", "Insured Service"],
     },
-  ]
+  ];
 
   const recentWorks = [
     {
       title: "AC Installation & Repair",
       location: "Bandra, Mumbai",
-      description: "Complete AC installation and repair service for residential complex",
-      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop",
+      description:
+        "Complete AC installation and repair service for residential complex",
+      image:
+        "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop",
       rating: 5,
       date: "Dec 2024",
     },
     {
       title: "Washing Machine Repair",
       location: "Andheri, Mumbai",
-      description: "Front load washing machine repair with genuine parts replacement",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+      description:
+        "Front load washing machine repair with genuine parts replacement",
+      image:
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
       rating: 5,
       date: "Dec 2024",
     },
     {
       title: "Refrigerator Service",
       location: "Powai, Mumbai",
-      description: "Double door refrigerator cooling issue resolved with compressor service",
-      image: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400&h=300&fit=crop",
+      description:
+        "Double door refrigerator cooling issue resolved with compressor service",
+      image:
+        "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400&h=300&fit=crop",
       rating: 5,
       date: "Nov 2024",
     },
     {
       title: "Mobile Screen Replacement",
       location: "Malad, Mumbai",
-      description: "iPhone screen replacement with original display and touch functionality",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",
+      description:
+        "iPhone screen replacement with original display and touch functionality",
+      image:
+        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",
       rating: 5,
       date: "Nov 2024",
     },
-  ]
+  ];
 
   const testimonials = [
     {
@@ -154,7 +172,7 @@ const HomePage = () => {
       text: "Best repair service in the city. Highly recommend Fix It India for all repairs.",
       rating: 5,
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-x-hidden relative">
@@ -232,10 +250,15 @@ const HomePage = () => {
         <div className="container mx-auto px-2 py-2">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <motion.div whileHover={{ scale: 1.05 }} className="flex items-center space-x-2">
-              <img src={logo} alt="Fixit Logo" className="w-20 h-20 rounded-lg object-cover" />
-              
-              
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center space-x-2"
+            >
+              <img
+                src={logo}
+                alt="Fixit Logo"
+                className="w-20 h-20 rounded-lg object-cover"
+              />
             </motion.div>
 
             {/* Desktop Navigation */}
@@ -255,11 +278,17 @@ const HomePage = () => {
                   transition={{ delay: index * 0.1 }}
                 >
                   {item.isLink ? (
-                    <button onClick={navigateToPrivacyPolicy} className="hover:text-primary transition-colors">
+                    <button
+                      onClick={navigateToPrivacyPolicy}
+                      className="hover:text-primary transition-colors"
+                    >
                       {item.label}
                     </button>
                   ) : (
-                    <button onClick={() => scrollToSection(item.id)} className="hover:text-primary transition-colors">
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className="hover:text-[#E23830] transition-colors"
+                    >
                       {item.label}
                     </button>
                   )}
@@ -280,18 +309,29 @@ const HomePage = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                <Phone className="w-4 h-4 text-primary" />
+                <Phone className="w-4 h-4 text-[#E23830]" />
                 <span>+91 9876543210</span>
               </motion.div>
-              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}>
-                <CustomButton onClick={() => scrollToSection("contact")} size="lg">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <CustomButton
+                  onClick={() => scrollToSection("contact")}
+                  size="lg"
+                >
                   Contact Us
                 </CustomButton>
               </motion.div>
             </div>
 
             {/* Mobile Menu Button */}
-            <motion.button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden" whileTap={{ scale: 0.9 }}>
+            <motion.button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden"
+              whileTap={{ scale: 0.9 }}
+            >
               <AnimatePresence mode="wait">
                 {isMenuOpen ? (
                   <motion.div
@@ -328,20 +368,32 @@ const HomePage = () => {
                 className="md:hidden mt-4 pb-4 border-t border-gray-700 pt-4 overflow-hidden"
               >
                 <div className="flex flex-col space-y-4">
-                  <button onClick={() => scrollToSection("home")} className="text-left hover:text-primary">
+                  <button
+                    onClick={() => scrollToSection("home")}
+                    className="text-left hover:text-[#E23830]"
+                  >
                     Home
                   </button>
-                  <button onClick={() => scrollToSection("services")} className="text-left hover:text-primary">
+                  <button
+                    onClick={() => scrollToSection("services")}
+                    className="text-left hover:text-[#E23830]"
+                  >
                     Services
                   </button>
-                  <button onClick={() => scrollToSection("work")} className="text-left hover:text-primary">
+                  <button
+                    onClick={() => scrollToSection("work")}
+                    className="text-left hover:text-[#E23830]"
+                  >
                     Our Work
                   </button>
-                  <button onClick={navigateToPrivacyPolicy} className="text-left hover:text-primary">
+                  <button
+                    onClick={navigateToPrivacyPolicy}
+                    className="text-left hover:text-[#E23830]"
+                  >
                     Privacy Policy
                   </button>
                   <div className="flex items-center space-x-2 text-sm">
-                    <Phone className="w-4 h-4 text-primary" />
+                    <Phone className="w-4 h-4 text-[#E23830]" />
                     <span>+91 9876543210</span>
                   </div>
                 </div>
@@ -352,13 +404,20 @@ const HomePage = () => {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center">
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center justify-center"
+      >
         <motion.div style={{ y, opacity }} className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5"></div>
         </motion.div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <motion.h1
               className="text-5xl md:text-7xl font-bold mb-6"
               initial={{ opacity: 0, scale: 0.5 }}
@@ -366,7 +425,7 @@ const HomePage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.span
-                className="text-white"
+                className="text-[#E23830]"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -374,7 +433,7 @@ const HomePage = () => {
                 FIX IT
               </motion.span>{" "}
               <motion.span
-                className="text-primary"
+                className="text-[#E23830]"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -389,7 +448,8 @@ const HomePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              Your Trusted Partner for All Repair Services - From Home Appliances to Electronics
+              Your Trusted Partner for All Repair Services - From Home
+              Appliances to Electronics
             </motion.p>
 
             <motion.div
@@ -398,7 +458,11 @@ const HomePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
-              <CustomButton onClick={() => scrollToSection("services")} size="lg" className="shadow-lg">
+              <CustomButton
+                onClick={() => scrollToSection("services")}
+                size="lg"
+                className="shadow-lg"
+              >
                 Our Services
                 <ArrowRight className="ml-2 w-5 h-5" />
               </CustomButton>
@@ -438,7 +502,8 @@ const HomePage = () => {
               Our <span className="text-primary">Services</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We provide comprehensive repair services for all your needs with expert technicians and genuine parts
+              We provide comprehensive repair services for all your needs with
+              expert technicians and genuine parts
             </p>
           </div>
 
@@ -468,7 +533,10 @@ const HomePage = () => {
                     <p className="text-gray-600 mb-4">{service.description}</p>
                     <div className="space-y-2">
                       {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center justify-center space-x-2 text-sm text-gray-700">
+                        <div
+                          key={idx}
+                          className="flex items-center justify-center space-x-2 text-sm text-gray-700"
+                        >
                           <CheckCircle className="w-4 h-4 text-primary" />
                           <span>{feature}</span>
                         </div>
@@ -524,11 +592,16 @@ const HomePage = () => {
                       </h3>
                       <div className="flex items-center space-x-1">
                         {[...Array(work.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <Star
+                            key={i}
+                            className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                          />
                         ))}
                       </div>
                     </div>
-                    <p className="text-gray-400 text-sm mb-2">{work.location}</p>
+                    <p className="text-gray-400 text-sm mb-2">
+                      {work.location}
+                    </p>
                     <p className="text-gray-300 text-sm">{work.description}</p>
                   </CustomCardContent>
                 </CustomCard>
@@ -546,7 +619,8 @@ const HomePage = () => {
               Why Choose <span className="text-primary">Us?</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Quality repairs with guaranteed satisfaction - see our expertise in action
+              Quality repairs with guaranteed satisfaction - see our expertise
+              in action
             </p>
           </div>
 
@@ -569,11 +643,15 @@ const HomePage = () => {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-center space-x-3 group"
                   >
-                    <motion.div whileHover={{ scale: 1.2, rotate: 360 }} transition={{ duration: 0.3 }}>
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 360 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       <CheckCircle className="w-6 h-6 text-[#E23830] flex-shrink-0" />
-
                     </motion.div>
-                    <span className="text-gray-700 group-hover:text-gray-900 transition-colors">{feature}</span>
+                    <span className="text-gray-700 group-hover:text-gray-900 transition-colors">
+                      {feature}
+                    </span>
                   </motion.div>
                 ))}
               </div>
@@ -585,7 +663,9 @@ const HomePage = () => {
                   className="text-center p-6 bg-white rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="text-3xl font-bold text-[#E23830]  mb-2">5000+</div>
+                  <div className="text-3xl font-bold text-[#E23830]  mb-2">
+                    5000+
+                  </div>
                   <div className="text-gray-600">Happy Customers</div>
                 </motion.div>
                 <motion.div
@@ -593,7 +673,9 @@ const HomePage = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <div className="text-3xl font-bold text-[#E23830]  mb-2">10+</div>
+                  <div className="text-3xl font-bold text-[#E23830]  mb-2">
+                    10+
+                  </div>
                   <div className="text-gray-600">Years Experience</div>
                 </motion.div>
                 <motion.div
@@ -601,7 +683,9 @@ const HomePage = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <div className="text-3xl font-bold text-[#E23830]  mb-2">24/7</div>
+                  <div className="text-3xl font-bold text-[#E23830]  mb-2">
+                    24/7
+                  </div>
                   <div className="text-gray-600">Support</div>
                 </motion.div>
                 <motion.div
@@ -609,7 +693,9 @@ const HomePage = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <div className="text-3xl font-bold text-[#E23830]  mb-2">100%</div>
+                  <div className="text-3xl font-bold text-[#E23830]  mb-2">
+                    100%
+                  </div>
                   <div className="text-gray-600">Satisfaction</div>
                 </motion.div>
               </div>
@@ -623,7 +709,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              What Our <span className="text-primary">Customers Say</span>
+              What Our <span className="text-[#E23830]">Customers Say</span>
             </h2>
           </div>
 
@@ -641,13 +727,22 @@ const HomePage = () => {
                   <CustomCardContent>
                     <div className="flex items-center mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                        <Star
+                          key={i}
+                          className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                        />
                       ))}
                     </div>
-                    <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
+                    <p className="text-gray-600 mb-4 italic">
+                      "{testimonial.text}"
+                    </p>
                     <div>
-                      <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                      <div className="text-sm text-gray-500">{testimonial.location}</div>
+                      <div className="font-semibold text-gray-900">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {testimonial.location}
+                      </div>
                     </div>
                   </CustomCardContent>
                 </CustomCard>
@@ -662,10 +757,11 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              Get In <span className="text-primary">Touch</span>
+              Get In <span className="text-[#E23830]">Touch</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ready to fix your appliances? Contact us now for quick and reliable service
+              Ready to fix your appliances? Contact us now for quick and
+              reliable service
             </p>
           </div>
 
@@ -673,7 +769,9 @@ const HomePage = () => {
             {/* Contact Information */}
             <div className="fade-in-left space-y-8">
               <div>
-                <h3 className="text-2xl font-semibold mb-6 text-gray-900">Contact Information</h3>
+                <h3 className="text-2xl font-semibold mb-6 text-gray-900">
+                  Contact Information
+                </h3>
                 <div className="space-y-6">
                   <motion.div
                     className="flex items-start space-x-4"
@@ -681,12 +779,16 @@ const HomePage = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-primary" />
+                      <Phone className="w-6 h-6 text-[#E23830]" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Call Us</h4>
-                      <p className="text-primary font-medium">+91 9876543210</p>
-                      <p className="text-gray-600 text-sm">Available 24/7 for emergency repairs</p>
+                      <h4 className="font-semibold text-gray-900 mb-1">
+                        Call Us
+                      </h4>
+                      <p className="text-red-500 font-medium">+91 9876543210</p>
+                      <p className="text-gray-600 text-sm">
+                        Available 24/7 for emergency repairs
+                      </p>
                     </div>
                   </motion.div>
 
@@ -696,12 +798,18 @@ const HomePage = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-6 h-6 text-primary" />
+                      <Mail className="w-6 h-6 text-[#E23830]" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Email Us</h4>
-                      <p className="text-primary font-medium">info@fixitindia.com</p>
-                      <p className="text-gray-600 text-sm">Get a quote within 2 hours</p>
+                      <h4 className="font-semibold text-gray-900 mb-1">
+                        Email Us
+                      </h4>
+                      <p className="text-[#E23830] font-medium">
+                        info@fixitindia.com
+                      </p>
+                      <p className="text-gray-600 text-sm">
+                        Get a quote within 2 hours
+                      </p>
                     </div>
                   </motion.div>
 
@@ -711,12 +819,18 @@ const HomePage = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-primary" />
+                      <MapPin className="w-6 h-6 text-[#E23830]" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Service Areas</h4>
-                      <p className="text-primary font-medium">Mumbai, Delhi, Pune, Bangalore</p>
-                      <p className="text-gray-600 text-sm">Expanding to more cities soon</p>
+                      <h4 className="font-semibold text-gray-900 mb-1">
+                        Service Areas
+                      </h4>
+                      <p className="text-[#E23830] font-medium">
+                        Mumbai, Delhi, Pune, Bangalore
+                      </p>
+                      <p className="text-gray-600 text-sm">
+                        Expanding to more cities soon
+                      </p>
                     </div>
                   </motion.div>
                 </div>
@@ -738,7 +852,7 @@ const HomePage = () => {
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
                     >
-                      <social.icon className="w-5 h-5" />
+                      <social.icon className="w-5 h-5 text-red-600" />
                     </motion.a>
                   ))}
                 </div>
@@ -749,18 +863,24 @@ const HomePage = () => {
             <div className="fade-in-right">
               <CustomCard className="bg-white border-gray-200 shadow-lg">
                 <CustomCardContent className="p-8">
-                  <h3 className="text-2xl font-semibold mb-6 text-gray-900">Send us a Message</h3>
+                  <h3 className="text-2xl font-semibold mb-6 text-gray-900">
+                    Send us a Message
+                  </h3>
                   <form
                     className="space-y-6"
                     onSubmit={(e) => {
-                      e.preventDefault()
-                      alert("Thank you for your message! We will get back to you within 2 hours.")
-                      e.target.reset()
+                      e.preventDefault();
+                      alert(
+                        "Thank you for your message! We will get back to you within 2 hours."
+                      );
+                      e.target.reset();
                     }}
                   >
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Name
+                        </label>
                         <input
                           type="text"
                           className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors text-gray-900"
@@ -769,7 +889,9 @@ const HomePage = () => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Phone
+                        </label>
                         <input
                           type="tel"
                           className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors text-gray-900"
@@ -779,7 +901,9 @@ const HomePage = () => {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Email
+                      </label>
                       <input
                         type="email"
                         className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors text-gray-900"
@@ -788,7 +912,9 @@ const HomePage = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Service Required</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Service Required
+                      </label>
                       <select
                         className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors text-gray-900"
                         required
@@ -796,13 +922,17 @@ const HomePage = () => {
                         <option value="">Select Service</option>
                         <option value="ac">AC Repair</option>
                         <option value="washing">Washing Machine Repair</option>
-                        <option value="refrigerator">Refrigerator Repair</option>
+                        <option value="refrigerator">
+                          Refrigerator Repair
+                        </option>
                         <option value="mobile">Mobile/Laptop Repair</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Message
+                      </label>
                       <textarea
                         rows={4}
                         className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors text-gray-900 resize-none"
@@ -830,12 +960,17 @@ const HomePage = () => {
             <div className="fade-in-up">
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
-                  <Wrench className="w-5 h-5 text-white" />
+                  <img
+                    src={logo}
+                    alt="Fixit logo"
+                    className="w-20 h-20 rounded-lg object-contain"
+                  />
                 </div>
-                <span className="text-xl font-bold">Fix It India</span>
+                <span className="text-xl font-semibold">Fix It India</span>
               </div>
               <p className="text-gray-400 mb-4">
-                Your trusted partner for all repair services. We fix it right, we fix it fast!
+                Your trusted partner for all repair services. We fix it right,
+                we fix it fast!
               </p>
               <div className="flex space-x-4">
                 {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
@@ -853,7 +988,9 @@ const HomePage = () => {
 
             {/* Quick Links */}
             <div className="fade-in-up" style={{ animationDelay: "0.1s" }}>
-              <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">
+                Quick Links
+              </h4>
               <ul className="space-y-2">
                 <li>
                   <motion.button
@@ -904,23 +1041,31 @@ const HomePage = () => {
 
             {/* Services */}
             <div className="fade-in-up" style={{ animationDelay: "0.2s" }}>
-              <h4 className="text-lg font-semibold text-white mb-4">Our Services</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">
+                Our Services
+              </h4>
               <ul className="space-y-2">
-                {["AC Repair", "Washing Machine", "Refrigerator", "Mobile Repair", "Laptop Repair"].map(
-                  (service, index) => (
-                    <li key={index}>
-                      <span className="text-gray-400 hover:text-primary transition-colors cursor-pointer">
-                        {service}
-                      </span>
-                    </li>
-                  ),
-                )}
+                {[
+                  "AC Repair",
+                  "Washing Machine",
+                  "Refrigerator",
+                  "Mobile Repair",
+                  "Laptop Repair",
+                ].map((service, index) => (
+                  <li key={index}>
+                    <span className="text-gray-400 hover:text-primary transition-colors cursor-pointer">
+                      {service}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Contact Info */}
             <div className="fade-in-up" style={{ animationDelay: "0.3s" }}>
-              <h4 className="text-lg font-semibold text-white mb-4">Contact Info</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">
+                Contact Info
+              </h4>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-4 h-4 text-primary" />
@@ -940,7 +1085,7 @@ const HomePage = () => {
 
           <div className="border-t border-gray-700 pt-8 text-center fade-in-up">
             <p className="text-gray-400">
-              © 2024 Fix It India. All rights reserved. | Designed with ❤️ for better service
+              © 2024 Fix It India. All rights reserved.
             </p>
           </div>
         </div>
@@ -970,7 +1115,7 @@ const HomePage = () => {
         </motion.a>
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
